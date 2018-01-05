@@ -14,6 +14,8 @@
 
         Task<PriceHistoryRoot> GetPriceHistoryAsync(string item, string quality, int appId = 440, bool craftable = true, int priceindex = 0);
 
-        Task<ClassifiedsSearchRoot> GetClassifiedsSearch(string item, bool getItemNames = false, Dictionary<string, string> filters = null, string intent = "dual", int page = 1, int pageSize = 10, bool fold = true, ulong steamId = 0);
+        Task<ClassifiedsSearchRoot> GetClassifiedsSearchAsync(string item, bool getItemNames = false, Dictionary<string, string> filters = null, string intent = "dual", int page = 1, int pageSize = 10, bool fold = true, ulong steamId = 0);
+
+        Task<SpecialItemsRoot> GetSpecialItemsAsync(int appid = 440);
     }
 }

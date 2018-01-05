@@ -19,12 +19,17 @@
             PriceHistoryRoot priceHistory = await apiWrapper.GetPriceHistoryAsync("Mann Co. Supply Crate Key", "Unique").ConfigureAwait(false);
             UserInfoRoot userInfo = await apiWrapper.GetUserInfoAsync(new List<ulong> { 76561198051696861 }).ConfigureAwait(false);
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // THIS API HAS A COOLDOWN OF 60 SECONDS, IF NOT MORE. COMMENT THE LINE BELOW IF YOU WILL BE RUNNING MULTIPLE TESTS IN QUICK SUCCESSION.
-            CommunityPricesRoot communityPrices = await apiWrapper.GetCommunityPricesAsync().ConfigureAwait(false);
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //   THIS API HAS A COOLDOWN OF 60 SECONDS! UNCOMMENT THE LINE BELOW IF YOU WOULD LIKE TO TEST THIS API.
+            // CommunityPricesRoot communityPrices = await apiWrapper.GetCommunityPricesAsync().ConfigureAwait(false);
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ClassifiedsSearchRoot root = await apiWrapper.GetClassifiedsSearch("Scattergun", filters: new Dictionary<string, string>{ {"quality", "5" } });
+            ClassifiedsSearchRoot classifiedsSearch = await apiWrapper.GetClassifiedsSearchAsync("Scattergun", page: 2, filters: new Dictionary<string, string>{ {"quality", "5" } }).ConfigureAwait(false);
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////
+            // THIS API HAS A COOLDOWN OF 1800 SECONDS! UNCOMMENT THE LINE BELOW IF YOU WOULD LIKE TO TEST THIS API.
+            // SpecialItemsRoot specialItems = await apiWrapper.GetSpecialItemsAsync().ConfigureAwait(false);
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
             await Task.Delay(-1);
         }

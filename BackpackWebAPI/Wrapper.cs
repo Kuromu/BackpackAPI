@@ -107,7 +107,7 @@ namespace BackpackWebAPI
             return root;
         }
 
-        public async Task<ClassifiedsSearchRoot> GetClassifiedsSearch(string item, bool getItemNames = false, Dictionary<string, string> filters = null, string intent = "dual", int page = 1, int pageSize = 10, bool fold = true, ulong steamId = 0)
+        public async Task<ClassifiedsSearchRoot> GetClassifiedsSearchAsync(string item, bool getItemNames = false, Dictionary<string, string> filters = null, string intent = "dual", int page = 1, int pageSize = 10, bool fold = true, ulong steamId = 0)
         {
             string response = string.Empty;
             ClassifiedsSearchRoot root = null;
@@ -133,6 +133,27 @@ namespace BackpackWebAPI
                 catch (Exception ex)
                 {
                     throw new BackpackRequestException("Error in GetClassifiedsListings API - check inputs and try again.", ex);
+                }
+            }
+
+            return root;
+        }
+
+        public async Task<SpecialItemsRoot> GetSpecialItemsAsync(int appid = 440)
+        {
+            string response = string.Empty;
+            SpecialItemsRoot root = null;
+
+            using (HttpClient http = new HttpClient())
+            {
+                try
+                {
+                    response = await http.GetStringAsync($"https://backpack.tf/api/IGetSpecialItems/v1?key={this.apiKey}&appid={appid}").ConfigureAwait(false);
+                    root = JsonConvert.DeserializeObject<SpecialItemsRoot>(response);
+                }
+                catch (Exception ex)
+                {
+                    throw new BackpackRequestException("Error in GetSpecialItems API - check inputs and try again.", ex);
                 }
             }
 
