@@ -1,6 +1,7 @@
 ﻿namespace BackpackWebAPI.Models
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
 
     public class PriceHistoryRoot
@@ -18,20 +19,12 @@
         public string Message { get; private set; }
 
         [JsonProperty("history")]
-        private IReadOnlyList<PriceHistory> priceHistory;
+        public IReadOnlyList<PriceHistory> PriceHistory { get; private set; }
 
+        /* Disabling this for now - it's neat, but the price histories are already sorted by date
         public IReadOnlyDictionary<long, PriceHistory> PriceHistory
-        {
-            get
-            {
-                Dictionary<long, PriceHistory> history = new Dictionary<long, PriceHistory>();
-                foreach (PriceHistory p in this.priceHistory)
-                {
-                    history.Add(p.Timestamp, p);
-                }
-                return history;
-            }
-        }
+            => priceHistory.ToDictionary(price => price.Timestamp, price => price);
+        */
 
     }
 
