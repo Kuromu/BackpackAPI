@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     public class ClassifiedsSearchRoot
     {
@@ -37,7 +36,6 @@
                 }
             }
         }
-            //=> (buy != null && !JArray.Parse(buy.ToString()).HasValues) ? JsonConvert.DeserializeObject<Intent>(buy.ToString()) : null;
 
         public Intent Sell
         {
@@ -58,7 +56,6 @@
                 }
             }
         }
-            //=> (sell != null && !JArray.Parse(sell.ToString()).HasValues) ? JsonConvert.DeserializeObject<Intent>(sell.ToString()) : null;
 
 
         [JsonProperty("buy")]

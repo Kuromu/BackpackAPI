@@ -93,6 +93,12 @@
         public long LastUpdate { get; private set; }
 
         [JsonProperty("value_high")]
-        public double? ValueHigh { get; private set; }
+        public double? HighValue { get; private set; }
+
+        [JsonProperty("value_raw")]
+        public double? RawValue { get; private set; }
+
+        [JsonProperty("value_high_raw")]
+        public double? HighRawValue { get; private set; }
     }
 }
