@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     public class ClassifiedsSearchRoot
     {
@@ -17,11 +18,54 @@
         [JsonProperty("page_size")]
         public long PageSize { get; private set; }
 
+        public Intent Buy
+        {
+            get
+            {
+                if (buy == null)
+                    return null;
+
+                var json = buy.ToString();
+
+                try
+                {
+                    return JsonConvert.DeserializeObject<Intent>(json);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+            //=> (buy != null && !JArray.Parse(buy.ToString()).HasValues) ? JsonConvert.DeserializeObject<Intent>(buy.ToString()) : null;
+
+        public Intent Sell
+        {
+            get
+            {
+                if (sell == null)
+                    return null;
+
+                var json = sell.ToString();
+
+                try
+                {
+                    return JsonConvert.DeserializeObject<Intent>(json);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+            //=> (sell != null && !JArray.Parse(sell.ToString()).HasValues) ? JsonConvert.DeserializeObject<Intent>(sell.ToString()) : null;
+
+
         [JsonProperty("buy")]
-        public Intent Buy { get; private set; }
+        private object buy;
 
         [JsonProperty("sell")]
-        public Intent Sell { get; private set; }
+        private object sell;
     }
 
     public class Intent

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Authors>Chrome Artiste</Authors>
     <Company>Kuromu</Company>
     <Description>A .NET wrapper for the API provided by https://backpack.tf/. Support for all currently implemented (and safe to use) APIs.</Description>

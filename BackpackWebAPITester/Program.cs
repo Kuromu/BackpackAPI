@@ -13,7 +13,7 @@
         static async Task MainAsync()
         {
             // your API key goes here.
-            Wrapper apiWrapper = new Wrapper("");
+            BackpackWrapper apiWrapper = new BackpackWrapper("");
 
             CurrenciesRoot currencies = await apiWrapper.GetCurrenciesAsync().ConfigureAwait(false);
             PriceHistoryRoot priceHistory = await apiWrapper.GetPriceHistoryAsync("Mann Co. Supply Crate Key", "Unique").ConfigureAwait(false);
@@ -24,7 +24,7 @@
             // CommunityPricesRoot communityPrices = await apiWrapper.GetCommunityPricesAsync().ConfigureAwait(false);
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ClassifiedsSearchRoot classifiedsSearch = await apiWrapper.GetClassifiedsSearchAsync("Scattergun", page: 2, filters: new Dictionary<string, string>{ {"quality", "5" } }).ConfigureAwait(false);
+            ClassifiedsSearchRoot classifiedsSearch = await apiWrapper.SearchClassifiedsAsync("Scattergun", intent: "sell", filters: new Dictionary<string, string>{ {"quality", "5" } }).ConfigureAwait(false);
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////
             // THIS API HAS A COOLDOWN OF 1800 SECONDS! UNCOMMENT THE LINE BELOW IF YOU WOULD LIKE TO TEST THIS API.
