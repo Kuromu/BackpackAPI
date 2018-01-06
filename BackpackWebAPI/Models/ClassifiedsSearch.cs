@@ -98,7 +98,7 @@
         [JsonProperty("origin")]
         public int? Origin { get; private set; }
 
-        [JsonProperty("stlye")]
+        [JsonProperty("style")]
         public int? Style { get; private set; }
 
         [JsonProperty("attributes")]
