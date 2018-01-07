@@ -251,7 +251,7 @@
         public int? Quantity { get; private set; }
 
         /// <summary>
-        /// Listing items' origin ID.
+        /// Listing items' origin ID. (See http://www.tf2tools.net/articles/singleorigin for a list of origin IDs.)
         /// </summary>
         [JsonProperty("origin")]
         public int? Origin { get; private set; }

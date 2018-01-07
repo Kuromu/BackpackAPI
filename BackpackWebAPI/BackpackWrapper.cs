@@ -133,11 +133,17 @@
         /// <param name="filters">
         /// <para>A <c>Dictionary</c> of search filters. Tinker with searches on https://backpack.tf/classifieds to see possible filters to use.</para>
         /// <para>Note that these are not subject to any guarantee and should be used as the website dictates.</para>
+        /// Examples:
+        /// <code>
+        /// { "quality", "Genuine" },
+        /// { "wear_tier", "1" },
+        /// { "killstreak_tier", "3" }
+        /// </code>
         /// </param>
         /// <param name="intent">The intent for the search. Valid values are: "dual", "buy", sell".</param>
         /// <param name="page">The page number to search on. Affected by <paramref name="pageSize"/>.</param>
-        /// <param name="pageSize">The size of "pages" to use. Affects <paramref name="page"/>. Must be between 1 and 30.</param>
-        /// <param name="fold">If set to false, items with identical price will not be grouped together or (folded).</param>
+        /// <param name="pageSize">The size of pages to use. Affects the items shown on <paramref name="page"/>. Must be between 1 and 30.</param>
+        /// <param name="fold">If set to false, items with identical price will not be grouped together or "folded").</param>
         /// <param name="steamId">If set, only search for listings by this SteamID64.</param>
         /// <returns>The root object for the ClassifiedsSearch API response.</returns>
         public async Task<ClassifiedsSearchRoot> SearchClassifiedsAsync(string item, bool getItemNames = false, Dictionary<string, string> filters = null, string intent = "dual", int page = 1, int pageSize = 10, bool fold = true, ulong steamId = 0)
