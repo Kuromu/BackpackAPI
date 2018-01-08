@@ -2,13 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>0.3.1</Version>
+    <Version>1.0.0</Version>
     <Authors>Chrome Artiste</Authors>
     <Company>Kuromu</Company>
     <Description>A .NET wrapper for the API provided by https://backpack.tf/. Support for all currently implemented (and safe to use) APIs.</Description>
     <PackageProjectUrl>https://github.com/Kuromu/BackpackWebAPI</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/Kuromu/BackpackWebAPI/blob/master/LICENSE</PackageIconUrl>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageIconUrl>https://i.imgur.com/VV4v0D3.png</PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://github.com/Kuromu/BackpackWebAPI/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>json api backpack tf2</PackageTags>
+    <PackageReleaseNotes>Official 1.0.0 release - here's to many more fixes and improvements in the future!</PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
