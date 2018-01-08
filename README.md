@@ -1,4 +1,6 @@
 # BackpackAPI
+[![MyGet](https://img.shields.io/nuget/v/BackpackWebAPI.svg)](https://www.nuget.org/packages/BackpackWebAPI)
+
 Library meant to provide clean methods and classes between your app and backpack.tf's own API.
 
 ## Want to try it out for yourself while I develop it?
