@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Represents the root object for the IGetPrices API.
@@ -28,7 +27,7 @@
         public bool IsSuccess { get; private set; }
 
         /// <summary>
-        /// If <see cref="BackpackWebAPI.Models.CommunityPricesResponse.IsSuccess"/> is false, this contains the reason for failure.
+        /// If <see cref="IsSuccess"/> is false, this contains the reason for failure.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; private set; }
@@ -46,13 +45,13 @@
         public double RawUsdValue { get; private set; }
 
         /// <summary>
-        /// The lowest form of currency upon which <see cref="BackpackWebAPI.Models.CommunityPricesResponse.RawUsdValue"/> is based on.
+        /// The lowest form of currency upon which <see cref="RawUsdValue"/> is based on.
         /// </summary>
         [JsonProperty("usd_currency")]
         public string UsdCurrency { get; private set; }
 
         /// <summary>
-        /// The definition index for the item used by <see cref="BackpackWebAPI.Models.CommunityPricesResponse.UsdCurrency"/>.
+        /// The definition index for the item used by <see cref="UsdCurrency"/>.
         /// </summary>
         [JsonProperty("usd_currency_index")]
         public long UsdCurrencyIndex { get; private set; }
@@ -117,14 +116,16 @@
                 
                 try
                 {
-                    return new Dictionary<string, ItemPrice>()
-                    {
-                        { "0", JsonConvert.DeserializeObject<ItemPrice>(JArray.Parse(json).First.ToString()) }
-                    };
+                    return JsonConvert.DeserializeObject<IReadOnlyDictionary<string, ItemPrice>>(json);
+                    
                 }
                 catch
                 {
-                    return JsonConvert.DeserializeObject<IReadOnlyDictionary<string, ItemPrice>>(json);
+                    List<ItemPrice> list = JsonConvert.DeserializeObject<List<ItemPrice>>(json);
+                    return new Dictionary<string, ItemPrice>()
+                    {
+                        { "0", list[0] }
+                    };
                 }
             }
         }
@@ -146,14 +147,16 @@
 
                 try
                 {
-                    return new Dictionary<string, ItemPrice>()
-                    {
-                        { "0", JsonConvert.DeserializeObject<ItemPrice>(JArray.Parse(json).First.ToString()) }
-                    };
+                    return JsonConvert.DeserializeObject<IReadOnlyDictionary<string, ItemPrice>>(json);
+
                 }
                 catch
                 {
-                    return JsonConvert.DeserializeObject<IReadOnlyDictionary<string, ItemPrice>>(json);
+                    List<ItemPrice> list = JsonConvert.DeserializeObject<List<ItemPrice>>(json);
+                    return new Dictionary<string, ItemPrice>()
+                    {
+                        { "0", list[0] }
+                    };
                 }
             }
         }
@@ -178,13 +181,13 @@
         public string CurrencyType { get; private set; }
 
         /// <summary>
-        /// The value for this item as a multiple of <see cref="BackpackWebAPI.Models.ItemPrice.CurrencyType"/>.
+        /// The value for this item as a multiple of <see cref="CurrencyType"/>.
         /// </summary>
         [JsonProperty("value")]
         public double Value { get; private set; }
 
         /// <summary>
-        /// The value's upper bound in price as a multiple of <see cref="BackpackWebAPI.Models.ItemPrice.CurrencyType"/>. Only set if the item has a price range.
+        /// The value's upper bound in price as a multiple of <see cref="CurrencyType"/>. Only set if the item has a price range.
         /// </summary>
         [JsonProperty("value_high")]
         public double? ValueHigh { get; private set; }
