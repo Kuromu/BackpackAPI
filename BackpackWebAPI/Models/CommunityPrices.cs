@@ -184,7 +184,7 @@
         /// The value for this item as a multiple of <see cref="CurrencyType"/>.
         /// </summary>
         [JsonProperty("value")]
-        public double Value { get; private set; }
+        public double? Value { get; private set; }
 
         /// <summary>
         /// The value's upper bound in price as a multiple of <see cref="CurrencyType"/>. Only set if the item has a price range.
@@ -209,7 +209,7 @@
         /// UNIX timestamp representing this item's last pricing update.
         /// </summary>
         [JsonProperty("last_update")]
-        public long LastUpdate { get; private set; }
+        public long? LastUpdate { get; private set; }
 
         /// <summary>
         /// <para>A relative difference between the last price and current price in the lowest currency.</para>
@@ -218,7 +218,7 @@
         /// <para>If the difference is 0, assume a refresh (no change).</para>
         /// </summary>
         [JsonProperty("difference")]
-        public double Difference { get; private set; }
+        public double? Difference { get; private set; }
 
         /// <summary>
         /// Whether or not this is for the australium variant of the weapon.
