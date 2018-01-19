@@ -84,7 +84,7 @@
         /// In-game item quality.
         /// </summary>
         [JsonProperty("item_quality")]
-        public int? Quality { get; private set; }
+        public int Quality { get; private set; }
 
         /// <summary>
         /// Minimum iLevel for this item.
@@ -93,7 +93,7 @@
         /// I actually don't know what this means. It may have to do with in-game "item levels".
         /// </remarks>
         [JsonProperty("min_ilevel")]
-        public int? MinLevel { get; private set; }
+        public int MinLevel { get; private set; }
 
         /// <summary>
         /// Maximum iLevel for this item.
@@ -102,7 +102,7 @@
         /// I actually don't know what this means. It may have to do with in-game "item levels".
         /// </remarks>
         [JsonProperty("max_ilevel")]
-        public int? MaxLevel { get; private set; }
+        public int MaxLevel { get; private set; }
 
         /// <summary>
         /// In-game image URL for this item.

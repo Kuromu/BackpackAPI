@@ -1,6 +1,7 @@
 ﻿namespace BackpackWebAPI.Models
 {
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -47,26 +48,10 @@
         /// <summary>
         /// URL pointing towards backpack.tf.
         /// </summary>
+        [Obsolete("This property is not needed or necessary and will be removed in a future version.")]
         [JsonProperty("url")]
         public string Url { get; private set; }
     }
-
-    /* disabled for now, might need to be re-enabled of the IReadOnlyDictionary doesn't work
-    public class Currencies
-    {
-        [JsonProperty("metal")]
-        public Currency Metal;
-
-        [JsonProperty("hat")]
-        public Currency Hat;
-
-        [JsonProperty("keys")]
-        public Currency Keys;
-
-        [JsonProperty("earbuds")]
-        public Currency Earbuds;
-    }
-    */
 
     /// <summary>
     /// Represents an individual currency.
@@ -131,7 +116,7 @@
         /// The currency's in-game definition index.
         /// </summary>
         [JsonProperty("defindex")]
-        public long Defindex { get; private set; }
+        public long DefIndex { get; private set; }
 
         /// <summary>
         /// The currencie's price.
@@ -176,14 +161,6 @@
         /// The currency's upper price; it's unlikely this will be set for basic currencies like metal or keys.
         /// </summary>
         [JsonProperty("value_high")]
-        public double? HighValue { get; private set; }
-
-        /* Not even sure if these ever appear.
-        [JsonProperty("value_raw")]
-        public double? RawValue { get; private set; }
-
-        [JsonProperty("value_high_raw")]
-        public double? HighRawValue { get; private set; }
-        */
+        public double HighValue { get; private set; }
     }
 }

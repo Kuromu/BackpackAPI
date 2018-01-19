@@ -178,10 +178,10 @@
         /// The type of currency used for pricing this item.
         /// </summary>
         [JsonProperty("currency")]
-        public string CurrencyType { get; private set; }
+        public string CurrencyType { get; private set; } = "None";
 
         /// <summary>
-        /// The value for this item as a multiple of <see cref="CurrencyType"/>.
+        /// The value for this item valued in its <see cref="CurrencyType"/>.
         /// </summary>
         [JsonProperty("value")]
         public double? Value { get; private set; }
@@ -200,7 +200,7 @@
         public double? ValueRaw { get; private set; }
 
         /// <summary>
-        /// If getRaw was set to 2 when making this API clal, this is the high raw value for this item.
+        /// If getRaw was set to 2 when making this API call, this is the high raw value for this item.
         /// </summary>
         [JsonProperty("value_raw_high")]
         public double? ValueRawHigh { get; private set; }
