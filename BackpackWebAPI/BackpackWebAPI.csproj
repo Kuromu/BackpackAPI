@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.1.7</Version>
+    <Version>1.2.0</Version>
     <Authors>Chrome Artiste</Authors>
     <Company>Kuromu</Company>
     <Description>A .NET wrapper for the API provided by https://backpack.tf/. Support for all currently implemented (and safe to use) APIs.</Description>
@@ -11,10 +11,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl>https://github.com/Kuromu/BackpackWebAPI/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>json api backpack tf2</PackageTags>
-    <PackageReleaseNotes>- CommunityPrices - Due to the sheer amount of possible outcomes for each item, each property is now nullable. While this is fundamentally not that different from 1.0.2+, a thorough amount of testing went into this so we will be moving forward with this version.</PackageReleaseNotes>
+    <PackageReleaseNotes>- All: Updated all long UNIX timestamps to DateTime.
+- CommunityPrices: Renamed the Value attributes to be more human-readable.</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.1.7.0</AssemblyVersion>
-    <FileVersion>1.1.7.0</FileVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

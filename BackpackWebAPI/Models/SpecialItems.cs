@@ -1,5 +1,6 @@
 ﻿namespace BackpackWebAPI.Models
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -27,10 +28,13 @@
         public bool IsSuccess { get; private set; }
 
         /// <summary>
-        /// UNIX timestamp representing the time this API was called.
+        /// The time this API was called, in UTC.
         /// </summary>
+        public DateTime CurrentTime
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(currentTime);
+
         [JsonProperty("current_time")]
-        public long CurrentTime { get; private set; }
+        private long currentTime;
 
         /// <summary>
         /// <c>List</c> of special items.

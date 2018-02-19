@@ -1,5 +1,6 @@
 ﻿namespace BackpackWebAPI.Models
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -33,10 +34,13 @@
         public string Message { get; private set; }
 
         /// <summary>
-        /// UNIX timestamp representing the time this API was called.
+        /// The time this API was called, in UTC.
         /// </summary>
+        public DateTime CurrentTime
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(currentTime);
+
         [JsonProperty("current_time")]
-        public long CurrentTime { get; private set; }
+        private long currentTime;
 
         /// <summary>
         /// The current value for the lowest form of currency in $USD.
@@ -109,10 +113,10 @@
         {
             get
             {
-                if (this.craftable == null)
+                if (craftable == null)
                     return null;
 
-                var json = this.craftable.ToString();
+                var json = craftable.ToString();
                 
                 try
                 {
@@ -141,7 +145,7 @@
         {
             get
             {
-                if (this.nonCraftable == null)
+                if (nonCraftable == null)
                     return null;
                 var json = this.nonCraftable.ToString();
 
@@ -190,26 +194,29 @@
         /// The value's upper bound in price as a multiple of <see cref="CurrencyType"/>. Only set if the item has a price range.
         /// </summary>
         [JsonProperty("value_high")]
-        public double? ValueHigh { get; private set; }
+        public double? HighValue { get; private set; }
 
         /// <summary>
         /// <para>If getRaw was set to 1 when making this API call, this is the average between the low and high raw values for this item.</para>
         /// <para>If getRaw was set to 2 when making this API call, this is the low raw value for this item.</para>
         /// </summary>
         [JsonProperty("value_raw")]
-        public double? ValueRaw { get; private set; }
+        public double? RawValue { get; private set; }
 
         /// <summary>
         /// If getRaw was set to 2 when making this API call, this is the high raw value for this item.
         /// </summary>
         [JsonProperty("value_raw_high")]
-        public double? ValueRawHigh { get; private set; }
+        public double? RawHighValue { get; private set; }
 
         /// <summary>
-        /// UNIX timestamp representing this item's last pricing update.
+        /// The last time this item was updated, in UTC. If it is the UTC Epoch, assume there has been no update.
         /// </summary>
+        public DateTime LastUpdate
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastUpdate.GetValueOrDefault());
+
         [JsonProperty("last_update")]
-        public long? LastUpdate { get; private set; }
+        private long? lastUpdate;
 
         /// <summary>
         /// <para>A relative difference between the last price and current price in the lowest currency.</para>
@@ -224,6 +231,6 @@
         /// Whether or not this is for the australium variant of the weapon.
         /// </summary>
         [JsonProperty("australium")]
-        public bool? Australium { get; private set; }
+        public bool? IsAustralium { get; private set; }
     }
 }

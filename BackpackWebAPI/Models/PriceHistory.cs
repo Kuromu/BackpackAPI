@@ -1,5 +1,6 @@
 ﻿namespace BackpackWebAPI.Models
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -71,7 +72,10 @@
         /// <summary>
         /// UNIX timestamp for this instance.
         /// </summary>
+        public DateTime Timestamp
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
+
         [JsonProperty("timestamp")]
-        public long Timestamp { get; private set; }
+        private long timestamp;
     }
 }

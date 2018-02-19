@@ -1,5 +1,6 @@
 ﻿namespace BackpackWebAPI.Models
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -33,10 +34,13 @@
         public string Avatar { get; private set; }
 
         /// <summary>
-        /// UNIX timestamp representing the date the user last used the site.
+        /// Time the user last visited this site, in UTC.
         /// </summary>
+        public DateTime LastOnline
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastOnline);
+
         [JsonProperty("last_online")]
-        public long LastOnline { get; private set; }
+        private long lastOnline;
 
         /// <summary>
         /// Whether or not the user is a backpack.tf admin.
@@ -123,6 +127,9 @@
         public bool? IsSteamRepAdmin { get; private set; } = null;
     }
 
+    /// <summary>
+    /// All ban info for a user.
+    /// </summary>
     public class Bans
     {
         /// <summary>
@@ -333,10 +340,13 @@
         public double Value { get; private set; }
 
         /// <summary>
-        /// UNIX timestamp for the last time this user's inventory for this game was updated on the site.
+        /// The last time this user's inventory for this game was updated on the site.
         /// </summary>
+        public DateTime LastUpdate
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastUpdate);
+
         [JsonProperty("updated")]
-        public long LastUpdate { get; private set; }
+        private long lastUpdate;
 
         /// <summary>
         /// Amount of raw metal the user has in their inventory for this game.

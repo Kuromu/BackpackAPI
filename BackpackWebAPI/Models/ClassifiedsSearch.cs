@@ -1,5 +1,6 @@
 ﻿namespace BackpackWebAPI.Models
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -176,10 +177,13 @@
         public string Details { get; private set; }
 
         /// <summary>
-        /// UNIX timestamp representing the date this listing was created.
+        /// The date this listing was created.
         /// </summary>
+        public DateTime DateCreated
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(dateCreated);
+
         [JsonProperty("created")]
-        public long DateCreated { get; private set; }
+        private long dateCreated;
 
         /// <summary>
         /// UNIX timestamp representing the date this listing was last bumped on the site.
@@ -187,8 +191,11 @@
         /// <remarks>
         /// If this field equals <see cref="BackpackWebAPI.Models.Listing.DateCreated"/>, then the listing has not been bumped.
         /// </remarks>
+        public DateTime LastBump
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastBump);
+
         [JsonProperty("bump")]
-        public long LastBump { get; private set; }
+        private long lastBump;
 
         /// <summary>
         /// Intent of this listing - <c>0</c> = buy, <c>1</c> = sell.
