@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <Authors>Chrome Artiste</Authors>
     <Company>Kuromu</Company>
     <Description>A .NET wrapper for the API provided by https://backpack.tf/. Support for all currently implemented (and safe to use) APIs.</Description>
@@ -11,11 +11,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl>https://github.com/Kuromu/BackpackWebAPI/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>json api backpack tf2</PackageTags>
-    <PackageReleaseNotes>- All: Updated all long UNIX timestamps to DateTime.
-- CommunityPrices: Renamed the Value attributes to be more human-readable.</PackageReleaseNotes>
+    <PackageReleaseNotes>- UserInfo: changed List&lt;ulong&gt; to params ulong[] for GetUserInfoAsync</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
+    <AssemblyVersion>1.3.0.0</AssemblyVersion>
+    <FileVersion>1.3.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

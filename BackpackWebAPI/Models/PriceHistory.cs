@@ -73,9 +73,9 @@
         /// UNIX timestamp for this instance.
         /// </summary>
         public DateTime Timestamp
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_timestamp);
 
         [JsonProperty("timestamp")]
-        private long timestamp;
+        private long _timestamp;
     }
 }

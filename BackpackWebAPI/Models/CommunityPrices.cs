@@ -37,10 +37,10 @@
         /// The time this API was called, in UTC.
         /// </summary>
         public DateTime CurrentTime
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(currentTime);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_currentTime);
 
         [JsonProperty("current_time")]
-        private long currentTime;
+        private long _currentTime;
 
         /// <summary>
         /// The current value for the lowest form of currency in $USD.
@@ -113,10 +113,10 @@
         {
             get
             {
-                if (craftable == null)
+                if (_craftable == null)
                     return null;
 
-                var json = craftable.ToString();
+                var json = _craftable.ToString();
                 
                 try
                 {
@@ -145,9 +145,9 @@
         {
             get
             {
-                if (nonCraftable == null)
+                if (_nonCraftable == null)
                     return null;
-                var json = this.nonCraftable.ToString();
+                var json = _nonCraftable.ToString();
 
                 try
                 {
@@ -156,7 +156,7 @@
                 }
                 catch
                 {
-                    List<ItemPrice> list = JsonConvert.DeserializeObject<List<ItemPrice>>(json);
+                    var list = JsonConvert.DeserializeObject<List<ItemPrice>>(json);
                     return new Dictionary<string, ItemPrice>()
                     {
                         { "0", list[0] }
@@ -166,10 +166,10 @@
         }
 
         [JsonProperty("Craftable")]
-        private object craftable;
+        private object _craftable;
 
         [JsonProperty("Non-Craftable")]
-        private object nonCraftable;
+        private object _nonCraftable;
 
     }
 
@@ -213,10 +213,10 @@
         /// The last time this item was updated, in UTC. If it is the UTC Epoch, assume there has been no update.
         /// </summary>
         public DateTime LastUpdate
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastUpdate.GetValueOrDefault());
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_lastUpdate.GetValueOrDefault());
 
         [JsonProperty("last_update")]
-        private long? lastUpdate;
+        private long? _lastUpdate;
 
         /// <summary>
         /// <para>A relative difference between the last price and current price in the lowest currency.</para>

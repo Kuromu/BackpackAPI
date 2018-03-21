@@ -31,10 +31,10 @@
         /// The time this API was called, in UTC.
         /// </summary>
         public DateTime CurrentTime
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(currentTime);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_currentTime);
 
         [JsonProperty("current_time")]
-        private long currentTime;
+        private long _currentTime;
 
         /// <summary>
         /// <c>List</c> of special items.

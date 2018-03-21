@@ -37,10 +37,10 @@
         /// Time the user last visited this site, in UTC.
         /// </summary>
         public DateTime LastOnline
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastOnline);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_lastOnline);
 
         [JsonProperty("last_online")]
-        private long lastOnline;
+        private long _lastOnline;
 
         /// <summary>
         /// Whether or not the user is a backpack.tf admin.
@@ -106,25 +106,25 @@
         /// Whether or not the user is a member of the Meet the Stats Steam group.
         /// </summary>
         [JsonProperty("group_member")]
-        public bool? IsGroupMember { get; private set; } = null;
+        public bool? IsGroupMember { get; private set; }
 
         /// <summary>
         /// Whether or not the user is a seller on marketplace.tf.
         /// </summary>
         [JsonProperty("marketplace_seller")]
-        public bool? IsMarketplaceSeller { get; private set; } = null;
+        public bool? IsMarketplaceSeller { get; private set; }
 
         /// <summary>
         /// Whether or not the user is currently online with backpack.tf Automatic.
         /// </summary>
         [JsonProperty("automatic")]
-        public bool? IsAutomatic { get; private set; } = null;
+        public bool? IsAutomatic { get; private set; }
 
         /// <summary>
         /// Whether or not the user is a SteamRep Admin.
         /// </summary>
         [JsonProperty("steamrep_admin")]
-        public bool? IsSteamRepAdmin { get; private set; } = null;
+        public bool? IsSteamRepAdmin { get; private set; }
     }
 
     /// <summary>
@@ -343,10 +343,10 @@
         /// The last time this user's inventory for this game was updated on the site.
         /// </summary>
         public DateTime LastUpdate
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastUpdate);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_lastUpdate);
 
         [JsonProperty("updated")]
-        private long lastUpdate;
+        private long _lastUpdate;
 
         /// <summary>
         /// Amount of raw metal the user has in their inventory for this game.

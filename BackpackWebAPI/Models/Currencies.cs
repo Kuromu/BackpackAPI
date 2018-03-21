@@ -155,10 +155,10 @@
         /// The last time this item was updated, in UTC. If it is the UTC Epoch, assume there has been no update.
         /// </summary>
         public DateTime LastUpdate
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastUpdate);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_lastUpdate);
 
         [JsonProperty("last_update")]
-        private long lastUpdate;
+        private long _lastUpdate;
 
         /// <summary>
         /// The currency's upper price; it's unlikely this will be set for basic currencies like metal or keys.

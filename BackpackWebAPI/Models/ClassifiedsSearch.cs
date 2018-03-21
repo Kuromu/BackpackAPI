@@ -43,10 +43,10 @@
         {
             get
             {
-                if (buy == null)
+                if (_buy == null)
                     return null;
 
-                var json = buy.ToString();
+                var json = _buy.ToString();
 
                 try
                 {
@@ -69,10 +69,10 @@
         {
             get
             {
-                if (sell == null)
+                if (_sell == null)
                     return null;
 
-                var json = sell.ToString();
+                var json = _sell.ToString();
 
                 try
                 {
@@ -87,10 +87,10 @@
 
 
         [JsonProperty("buy")]
-        private object buy;
+        private object _buy;
 
         [JsonProperty("sell")]
-        private object sell;
+        private object _sell;
     }
 
     /// <summary>
@@ -180,10 +180,10 @@
         /// The date this listing was created.
         /// </summary>
         public DateTime DateCreated
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(dateCreated);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_dateCreated);
 
         [JsonProperty("created")]
-        private long dateCreated;
+        private long _dateCreated;
 
         /// <summary>
         /// UNIX timestamp representing the date this listing was last bumped on the site.
@@ -192,10 +192,10 @@
         /// If this field equals <see cref="BackpackWebAPI.Models.Listing.DateCreated"/>, then the listing has not been bumped.
         /// </remarks>
         public DateTime LastBump
-            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(lastBump);
+            => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_lastBump);
 
         [JsonProperty("bump")]
-        private long lastBump;
+        private long _lastBump;
 
         /// <summary>
         /// Intent of this listing - <c>0</c> = buy, <c>1</c> = sell.

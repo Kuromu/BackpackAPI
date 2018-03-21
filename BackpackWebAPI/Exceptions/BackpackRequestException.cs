@@ -10,7 +10,7 @@ namespace BackpackWebAPI.Exceptions
     /// <para><see cref="BackpackWrapper.GetCurrenciesAsync(int)"/></para>
     /// <para><see cref="BackpackWrapper.GetPriceHistoryAsync(string, string, int, bool, int)"/></para>
     /// <para><see cref="BackpackWrapper.GetSpecialItemsAsync(int)"/></para>
-    /// <para><see cref="BackpackWrapper.GetUserInfoAsync(List{ulong})"/></para>
+    /// <para><see cref="BackpackWrapper.GetUserInfoAsync(params ulong[] steamIds)"/></para>
     /// <para><see cref="BackpackWrapper.SearchClassifiedsAsync(string, bool, Dictionary{string, string}, string, int, int, bool, ulong)"/></para>
     /// </summary>
     public class BackpackRequestException : Exception

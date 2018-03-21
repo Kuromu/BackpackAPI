@@ -2,10 +2,10 @@
 {
     using System;
     using System.Threading.Tasks;
-    using BackpackWebAPI.Models;
+    using Models;
     using System.Net.Http;
     using Newtonsoft.Json;
-    using BackpackWebAPI.Exceptions;
+    using Exceptions;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -38,7 +38,7 @@
         /// <param name="steamIds">A List of SteamID64s. Maximum of 100 per API call.</param>
         /// <returns>The root object for the IGetUserInfo API response.</returns>
         /// <exception cref="BackpackRequestException">Thrown if the input parameters are incorrect or an API key is not present.</exception>
-        public async Task<UserInfoRoot> GetUserInfoAsync(List<ulong> steamIds)
+        public async Task<UserInfoRoot> GetUserInfoAsync(params ulong[] steamIds)
         {
             try
             {
@@ -160,7 +160,7 @@
 
             try
             {
-                return await FetchResponseAsync<ClassifiedsSearchRoot>($"https://backpack.tf/api/classifieds/search/v1?item={item}&item_names={(getItemNames ? 1 : 0)}{filtersFormat}&intent={intent}&page={page}&page_size={pageSize}&fold={(fold ? 1 : 0)}{steamIdFormat}&key={this.apiKey}").ConfigureAwait(false);
+                return await FetchResponseAsync<ClassifiedsSearchRoot>($"https://backpack.tf/api/classifieds/search/v1?item={item}&item_names={(getItemNames ? 1 : 0)}{filtersFormat}&intent={intent}&page={page}&page_size={pageSize}&fold={(fold ? 1 : 0)}{steamIdFormat}&key={apiKey}").ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -180,7 +180,7 @@
         {
             try
             {
-                return await FetchResponseAsync<SpecialItemsRoot>($"https://backpack.tf/api/IGetSpecialItems/v1?key={this.apiKey}&appid={appid}").ConfigureAwait(false);
+                return await FetchResponseAsync<SpecialItemsRoot>($"https://backpack.tf/api/IGetSpecialItems/v1?key={apiKey}&appid={appid}").ConfigureAwait(false);
 
             }
             catch (Exception ex)
