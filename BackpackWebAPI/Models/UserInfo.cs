@@ -240,8 +240,14 @@
         /// <remarks>
         /// I am unsure whether this is in months, or a timestamp.
         /// </remarks>
+        public DateTime Ending
+            => _ending > 0
+                ? new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(_ending)
+                : DateTime.MaxValue;
+
         [JsonProperty("end")]
-        public long Ending { get; private set; }
+        private long _ending;
+
 
         /// <summary>
         /// The reason for the ban being in place.

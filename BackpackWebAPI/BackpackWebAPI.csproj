@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <Authors>Chrome Artiste</Authors>
     <Company>Kuromu</Company>
     <Description>A .NET wrapper for the API provided by https://backpack.tf/. Support for all currently implemented (and safe to use) APIs.</Description>
@@ -11,10 +11,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl>https://github.com/Kuromu/BackpackWebAPI/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>json api backpack tf2</PackageTags>
-    <PackageReleaseNotes>- UserInfo: changed List&lt;ulong&gt; to params ulong[] for GetUserInfoAsync</PackageReleaseNotes>
+    <PackageReleaseNotes>- UserInfo: changed Ending property of SiteBans to DateTime (will now be DateTime.MaxValue if the ban is permanent)</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.3.0.0</AssemblyVersion>
-    <FileVersion>1.3.0.0</FileVersion>
+    <AssemblyVersion>1.3.1.0</AssemblyVersion>
+    <FileVersion>1.3.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
